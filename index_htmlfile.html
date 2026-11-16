@@ -1,0 +1,982 @@
+﻿<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ასტრიდ ლინდგრენის კვირეული — II - III კლასები</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700;800;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ზედა პანელი / Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area" onclick="navigateTo('home')">
+        <div class="logo-icon">📚✨</div>
+        <div class="logo-text">
+          <h1 class="main-title">ასტრიდ ლინდგრენის კვირეული</h1>
+          <p class="sub-title" id="header-subtitle-text">საგანმანათლებლო მოგზაურობა • II - III კლასები (II ა და II ბ) 🎒</p>
+        </div>
+      </div>
+
+      <!-- კლასის ამომრჩევი და მოსწავლის პროფილი -->
+      <div class="header-controls">
+        <div class="class-picker" title="აირჩიე შენი კლასი">
+          <span class="picker-label">🏫 კლასი:</span>
+          <button type="button" class="class-btn active" id="btn-class-2a" onclick="selectClass('II ა')">II ა 🌟</button>
+          <button type="button" class="class-btn" id="btn-class-2b" onclick="selectClass('II ბ')">II ბ 🎈</button>
+          <button type="button" class="class-btn" id="btn-class-3" onclick="selectClass('III კლასი')">III კლასი 🚀</button>
+        </div>
+
+        <!-- ვარსკვლავების მრიცხველი -->
+        <div class="stars-badge" id="stars-display" title="შეგროვებული ვარსკვლავები">
+          <span class="star-icon">⭐</span>
+          <span class="star-count" id="star-count">0</span>
+          <span class="star-max">/ 5 მისია</span>
+        </div>
+
+        <!-- ხმის კონტროლი -->
+        <button type="button" class="sound-toggle-btn" id="sound-btn" onclick="toggleSound()" title="ხმის ჩართვა / გამორთვა">
+          <span id="sound-icon">🔊</span>
+          <span class="btn-text">ხმა</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ნავიგაციის მენიუ / Navigation Bar -->
+    <nav class="nav-bar">
+      <button class="nav-btn active" data-target="home" onclick="navigateTo('home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">მთავარი</span>
+      </button>
+      <button class="nav-btn btn-pippi" data-target="pippi" onclick="navigateTo('pippi')">
+        <span class="nav-icon">👧</span>
+        <span class="nav-label">პეპი</span>
+        <span class="nav-star" id="nav-star-pippi">⚪</span>
+      </button>
+      <button class="nav-btn btn-karlsson" data-target="karlsson" onclick="navigateTo('karlsson')">
+        <span class="nav-icon">🚁</span>
+        <span class="nav-label">კარლსონი</span>
+        <span class="nav-star" id="nav-star-karlsson">⚪</span>
+      </button>
+      <button class="nav-btn btn-emil" data-target="emil" onclick="navigateTo('emil')">
+        <span class="nav-icon">👦</span>
+        <span class="nav-label">ემილი</span>
+        <span class="nav-star" id="nav-star-emil">⚪</span>
+      </button>
+      <button class="nav-btn btn-ronia" data-target="ronia" onclick="navigateTo('ronia')">
+        <span class="nav-icon">🌲</span>
+        <span class="nav-label">რონია</span>
+        <span class="nav-star" id="nav-star-ronia">⚪</span>
+      </button>
+      <button class="nav-btn btn-library highlight-nav" data-target="library" onclick="navigateTo('library')">
+        <span class="nav-icon">🏛️</span>
+        <span class="nav-label">ბიბლიოთეკა</span>
+        <span class="nav-star" id="nav-star-library">⚪</span>
+      </button>
+      <button class="nav-btn btn-cert" data-target="certificate" onclick="navigateTo('certificate')">
+        <span class="nav-icon">🎓</span>
+        <span class="nav-label">სერტიფიკატი</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ძირითადი კონტეინერი -->
+  <main class="main-content">
+
+    <!-- ================= 1. მთავარი ეკრანი (HOME) ================= -->
+    <section id="view-home" class="view-section active">
+      <!-- მისალმების ბანერი -->
+      <div class="welcome-hero">
+        <div class="hero-text">
+          <div class="welcome-chip">👋 გამარჯობა, ძვირფასო მეგობარო!</div>
+          <h2 class="hero-title">კეთილი იყოს შენი მობრძანება ასტრიდ ლინდგრენის ჯადოსნურ სამყაროში! 🌈</h2>
+          <p class="hero-desc">
+            ამ კვირაში ჩვენ ვეცნობით მსოფლიოში ყველაზე საყვარელ გმირებს, ვსწავლობთ <strong>სიკეთეს</strong>, <strong>მეგობრობასა</strong> და <strong>სამართლიანობას</strong>, და ერთად ვემზადებით <strong>საუნივერსიტეტო ბიბლიოთეკაში</strong> საინტერესო ექსკურსიისთვის! 📖✨
+          </p>
+          <div class="hero-actions">
+            <button class="action-btn primary-pulse" onclick="navigateTo('pippi')">
+              <span>🚀 დავიწყოთ მოგზაურობა!</span>
+            </button>
+            <button class="action-btn secondary-btn" onclick="openTeacherModal()">
+              <span>👩‍🏫 მასწავლებლის გზამკვლევი</span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-illustration">
+          <div class="floating-books">
+            <span class="float-item item-1">📚</span>
+            <span class="float-item item-2">⭐</span>
+            <span class="float-item item-3">🎈</span>
+            <span class="float-item item-4">✨</span>
+          </div>
+          <div class="mascot-badge">
+            <div class="mascot-icon">🦉</div>
+            <div class="mascot-bubble">„წიგნი ჩვენი საუკეთესო მეგობარია!“</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- პროგრესის ბარი -->
+      <div class="progress-card">
+        <div class="progress-header">
+          <span class="progress-title">🎯 შენი კვირეულის პროგრესი:</span>
+          <span class="progress-status" id="progress-percent-text">0% დასრულებულია</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="progress-badges" id="progress-badges-strip">
+          <div class="mini-badge" id="badge-pip-indicator" onclick="navigateTo('pippi')">👧 პეპი: ⚪</div>
+          <div class="mini-badge" id="badge-karl-indicator" onclick="navigateTo('karlsson')">🚁 კარლსონი: ⚪</div>
+          <div class="mini-badge" id="badge-emil-indicator" onclick="navigateTo('emil')">👦 ემილი: ⚪</div>
+          <div class="mini-badge" id="badge-ron-indicator" onclick="navigateTo('ronia')">🌲 რონია: ⚪</div>
+          <div class="mini-badge" id="badge-lib-indicator" onclick="navigateTo('library')">🏛️ ბიბლიოთეკა: ⚪</div>
+        </div>
+      </div>
+
+      <!-- გმირების 4 ბარათი + ბიბლიოთეკის სპეციალური მისია -->
+      <div class="cards-grid-title">
+        <h3>✨ აირჩიე გმირი ან მისია:</h3>
+        <p class="subtitle-hint">დააჭირე ნებისმიერ ბარათს, რომ გაიცნო გმირი და ითამაშო სახალისო თამაშები!</p>
+      </div>
+
+      <div class="characters-grid">
+        <!-- 1. პეპი გრძელიწინდა -->
+        <article class="hero-card card-pippi" onclick="navigateTo('pippi')">
+          <div class="card-badge" id="card-badge-pippi">მისია: დასაწყებია 🌟</div>
+          <div class="card-avatar">
+            <span class="avatar-emoji">👧</span>
+            <span class="avatar-sub">🧦🐒</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-name">პეპი გრძელიწინდა</h3>
+            <p class="card-tagline">„მსოფლიოში ყველაზე ძლიერი და კეთილი გოგონა!“</p>
+            <div class="card-values">
+              <span class="value-tag">❤️ სიკეთე</span>
+              <span class="value-tag">🤝 მეგობრობა</span>
+              <span class="value-tag">⚖️ სამართლიანობა</span>
+            </div>
+            <button class="card-cta">
+              <span>გაიცანი პეპი</span>
+              <span class="arrow">➔</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. სახურავის ბინადარი კარლსონი -->
+        <article class="hero-card card-karlsson" onclick="navigateTo('karlsson')">
+          <div class="card-badge" id="card-badge-karlsson">მისია: დასაწყებია 🌟</div>
+          <div class="card-avatar">
+            <span class="avatar-emoji">🚁</span>
+            <span class="avatar-sub">🏠🍓</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-name">სახურავის ბინადარი კარლსონი</h3>
+            <p class="card-tagline">„მხიარული მეგობარი პროპელერითა და ტკბილი მურაბით!“</p>
+            <div class="card-values">
+              <span class="value-tag">😄 მხიარულება</span>
+              <span class="value-tag">🪁 ფანტაზია</span>
+              <span class="value-tag">🤗 ზრუნვა</span>
+            </div>
+            <button class="card-cta">
+              <span>გაიცანი კარლსონი</span>
+              <span class="arrow">➔</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. ემილის თავგადასავალი -->
+        <article class="hero-card card-emil" onclick="navigateTo('emil')">
+          <div class="card-badge" id="card-badge-emil">მისია: დასაწყებია 🌟</div>
+          <div class="card-avatar">
+            <span class="avatar-emoji">👦</span>
+            <span class="avatar-sub">🪵🍲</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-name">ემილის თავგადასავალი</h3>
+            <p class="card-tagline">„ცნობისმოყვარე ბიჭუნა დიდი და კეთილი გულით!“</p>
+            <div class="card-values">
+              <span class="value-tag">🌱 ცნობისმოყვარეობა</span>
+              <span class="value-tag">🪵 მოხერხებულობა</span>
+              <span class="value-tag">💖 გულისხმიერება</span>
+            </div>
+            <button class="card-cta">
+              <span>გაიცანი ემილი</span>
+              <span class="arrow">➔</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 4. ყაჩაღის ასული რონია -->
+        <article class="hero-card card-ronia" onclick="navigateTo('ronia')">
+          <div class="card-badge" id="card-badge-ronia">მისია: დასაწყებია 🌟</div>
+          <div class="card-avatar">
+            <span class="avatar-emoji">🌲</span>
+            <span class="avatar-sub">👧🏰</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-name">ყაჩაღის ასული რონია</h3>
+            <p class="card-tagline">„ტყის მამაცი მცველი და ერთგული მეგობარი!“</p>
+            <div class="card-values">
+              <span class="value-tag">🦁 სიმამაცე</span>
+              <span class="value-tag">🍃 ბუნების სიყვარული</span>
+              <span class="value-tag">🕊️ მშვიდობა</span>
+            </div>
+            <button class="card-cta">
+              <span>გაიცანი რონია</span>
+              <span class="arrow">➔</span>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- მე-5 სპეციალური მისია: ბიბლიოთეკა -->
+      <div class="special-mission-banner" onclick="navigateTo('library')">
+        <div class="mission-star-burst">⭐ სპეციალური მისია ⭐</div>
+        <div class="mission-banner-body">
+          <div class="mission-icon-box">🏛️📚</div>
+          <div class="mission-info">
+            <div class="mission-tag">საგანმანათლებლო ექსკურსია</div>
+            <h3 class="mission-headline">მოგზაურობა საუნივერსიტეტო ბიბლიოთეკაში! 🎓</h3>
+            <p class="mission-description">
+              მოვემზადოთ ნამდვილ ბიბლიოთეკაში სტუმრობისთვის: ვისწავლოთ წიგნების მოფრთხილება, ჩურჩულის წესი და გავხსნათ <strong>„ნორჩი მკითხველის საპატიო მედალი“</strong>!
+            </p>
+          </div>
+          <div class="mission-action">
+            <button class="mission-btn">
+              <span>გახსენი მისია</span>
+              <span class="arrow">➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. პეპის სივრცე ================= -->
+    <section id="view-pippi" class="view-section">
+      <div class="character-page-container theme-pippi">
+        <!-- გვერდის სათაური და უკან დაბრუნება -->
+        <div class="character-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <div class="header-status-pill" id="pippi-status-pill">
+            <span>მისია: შეასრულე 2 აქტივობა ⭐</span>
+          </div>
+        </div>
+
+        <div class="char-intro-grid">
+          <!-- ილუსტრაცია და პერსონაჟის ბარათი -->
+          <div class="char-hero-card">
+            <div class="char-portrait">
+              <div class="char-avatar-large">👧</div>
+              <div class="char-friends-icons">
+                <span title="მაიმუნი ბატონი ნილსონი">🐒</span>
+                <span title="პეპის ცხენი">🐴</span>
+                <span title="ჭრელი წინდები">🧦</span>
+              </div>
+            </div>
+            <h2 class="char-title">პეპი გრძელიწინდა</h2>
+            <div class="char-subtitle">ვილა „ყველაფერითავდაყირას“ მხიარული ბინადარი</div>
+            
+            <!-- აუდიო წამკითხველი ღილაკი -->
+            <button class="tts-read-btn" onclick="speakText('pippi-story-text')" title="ტექსტის მოსმენა">
+              <span class="tts-icon">🔊</span>
+              <span>მომისმინე (ხმამაღლა წაკითხვა)</span>
+            </button>
+          </div>
+
+          <!-- მარტივი ამბავი და მთავარი სიბრძნე -->
+          <div class="char-text-card">
+            <div class="story-box" id="pippi-story-text">
+              <h3 class="section-heading">📖 მოკლე ამბავი პეპის შესახებ:</h3>
+              <p class="story-sentence">
+                <span class="sentence-icon">🌟</span> 
+                გაიცანი <strong>პეპი</strong>! ის ცხოვრობს მხიარულ სახლში თავის <strong>ცხენთან</strong> 🐴 და პატარა <strong>მაიმუნთან</strong> 🐒 ერთად.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">💪</span> 
+                პეპი მსოფლიოში <strong>ყველაზე ძლიერი გოგონაა</strong>, მაგრამ თავის ძალას მხოლოდ სიკეთისთვის იყენებს.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">❤️</span> 
+                ის ყოველთვის <strong>იცავს სუსტებს</strong>, ეხმარება მეგობრებს — ტომისა და ანიკას, და არასოდეს ტოვებს მათ გასაჭირში.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🧦</span> 
+                პეპის აცვია <strong>ჭრელი წინდები</strong> და ყველას ასწავლის, რომ იყო განსხვავებული — ძალიან კარგია!
+              </p>
+            </div>
+
+            <!-- მთავარი სიბრძნე -->
+            <div class="wisdom-box wisdom-pippi">
+              <div class="wisdom-icon">💡</div>
+              <div class="wisdom-content">
+                <h4>რა გვასწავლა პეპიმ? (მთავარი სიბრძნე)</h4>
+                <p>
+                  <strong>„ნამდვილი ძალა სხვების დაცვასა და სიკეთეშია!“</strong><br>
+                  როდესაც ძლიერი ხარ, შენი ვალია დაიცვა ის, ვისაც შენი დახმარება სჭირდება. იყავი კეთილი და ერთგული მეგობარი! 🤝✨
+                </p>
+              </div>
+            </div>
+
+            <!-- პატარა სიტყვარი -->
+            <div class="vocab-box" id="pippi-vocab-box">
+              <div class="vocab-header">
+                <span>📚 პატარა სიტყვარი (დააჭირე სიტყვის მოსასმენად):</span>
+              </div>
+              <div class="vocab-grid" id="pippi-vocab-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ინტერაქტიული აქტივობები -->
+        <div class="activities-wrapper">
+          <div class="activities-title">
+            <h3>🎮 პეპის ინტერაქტიული თამაშები:</h3>
+            <p>შეასრულე ორივე დავალება და მიიღე პეპის ოქროს ვარსკვლავი!</p>
+          </div>
+
+          <!-- აქტივობა 1: ნივთების შეცნობა -->
+          <div class="activity-card" id="pippi-act-1">
+            <div class="act-header">
+              <span class="act-step">დავალება 1 / 2</span>
+              <h4 class="act-title">🧦 იპოვე პეპის 4 ჯადოსნური ნივთი და მეგობარი!</h4>
+            </div>
+            <p class="act-desc">დააჭირე მხოლოდ იმ სურათებს, რომლებიც პეპის ეკუთვნის. ფრთხილად: სხვების ნივთებს ნუ აურევ!</p>
+            
+            <div class="items-counter-bar" id="pippi-counter-bar">
+              <span>🧺 შეგროვებული ნივთები:</span>
+              <strong id="pippi-counter-text">0 / 4</strong>
+            </div>
+
+            <div class="items-grid" id="pippi-items-grid"></div>
+            <div class="act-feedback" id="pippi-items-feedback"></div>
+          </div>
+
+          <!-- აქტივობა 2: სიკეთის ვიქტორინა -->
+          <div class="activity-card" id="pippi-act-2">
+            <div class="act-header">
+              <span class="act-step">დავალება 2 / 2</span>
+              <h4 class="act-title">❓ პეპის სიკეთის გამოცანა</h4>
+            </div>
+            <div class="quiz-container" id="pippi-quiz-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. კარლსონის სივრცე ================= -->
+    <section id="view-karlsson" class="view-section">
+      <div class="character-page-container theme-karlsson">
+        <div class="character-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <div class="header-status-pill" id="karlsson-status-pill">
+            <span>მისია: შეასრულე 2 აქტივობა ⭐</span>
+          </div>
+        </div>
+
+        <div class="char-intro-grid">
+          <div class="char-hero-card">
+            <div class="char-portrait">
+              <div class="char-avatar-large">🚁</div>
+              <div class="char-friends-icons">
+                <span title="პროპელერი">⚙️</span>
+                <span title="მარწყვის მურაბა">🍓</span>
+                <span title="სახურავის პატარა სახლი">🏠</span>
+              </div>
+            </div>
+            <h2 class="char-title">სახურავის ბინადარი კარლსონი</h2>
+            <div class="char-subtitle">მხიარული მეგობარი, რომელიც სახურავზე ცხოვრობს</div>
+            
+            <button class="tts-read-btn" onclick="speakText('karlsson-story-text')" title="ტექსტის მოსმენა">
+              <span class="tts-icon">🔊</span>
+              <span>მომისმინე (ხმამაღლა წაკითხვა)</span>
+            </button>
+          </div>
+
+          <div class="char-text-card">
+            <div class="story-box" id="karlsson-story-text">
+              <h3 class="section-heading">📖 მოკლე ამბავი კარლსონის შესახებ:</h3>
+              <p class="story-sentence">
+                <span class="sentence-icon">🏠</span> 
+                გაიცანი <strong>კარლსონი</strong>! ის ცხოვრობს პატარა, მყუდრო სახლში, პირდაპირ <strong>სახურავზე</strong>.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🚁</span> 
+                ზურგზე მას აქვს ჯადოსნური <strong>პროპელერი</strong> — ღილაკს დააჭერს და ჩიტუნასავით დაფრინავს ცაში!
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🍓</span> 
+                კარლსონს ძალიან უყვარს ტკბილეული, გემრიელი <strong>მარწყვის მურაბა</strong> და მხიარული თამაშები.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🤝</span> 
+                ის თავისი პატარა მეგობრის — <strong>ბიჭუნას</strong> ცხოვრებას ყოველდღე საინტერესო თავგადასავლებით ავსებს!
+              </p>
+            </div>
+
+            <div class="wisdom-box wisdom-karlsson">
+              <div class="wisdom-icon">💡</div>
+              <div class="wisdom-content">
+                <h4>რა გვასწავლა კარლსონმა? (მთავარი სიბრძნე)</h4>
+                <p>
+                  <strong>„მეგობრობა და სიხარული მარტოობას ამარცხებს!“</strong><br>
+                  როდესაც მეგობარი მოწყენილია, გაუღიმე, მოუსმინე და გაუნაწილე შენი სათამაშო ან ტკბილეული. ერთად ყოფნა ყოველთვის უფრო მხიარულია! 🤗🎈
+                </p>
+              </div>
+            </div>
+
+            <!-- პატარა სიტყვარი -->
+            <div class="vocab-box" id="karlsson-vocab-box">
+              <div class="vocab-header">
+                <span>📚 პატარა სიტყვარი (დააჭირე სიტყვის მოსასმენად):</span>
+              </div>
+              <div class="vocab-grid" id="karlsson-vocab-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activities-wrapper">
+          <div class="activities-title">
+            <h3>🎮 კარლსონის ინტერაქტიული თამაშები:</h3>
+            <p>შეასრულე ორივე დავალება და მიიღე კარლსონის ოქროს პროპელერი!</p>
+          </div>
+
+          <!-- აქტივობა 1 -->
+          <div class="activity-card" id="karlsson-act-1">
+            <div class="act-header">
+              <span class="act-step">დავალება 1 / 2</span>
+              <h4 class="act-title">🚁 იპოვე კარლსონის 4 ნივთი!</h4>
+            </div>
+            <p class="act-desc">დააჭირე იმ სურათებს, რომლებიც კარლსონს ეკუთვნის სახურავზე:</p>
+            
+            <div class="items-counter-bar" id="karlsson-counter-bar">
+              <span>🧺 შეგროვებული ნივთები:</span>
+              <strong id="karlsson-counter-text">0 / 4</strong>
+            </div>
+
+            <div class="items-grid" id="karlsson-items-grid"></div>
+            <div class="act-feedback" id="karlsson-items-feedback"></div>
+          </div>
+
+          <!-- აქტივობა 2 -->
+          <div class="activity-card" id="karlsson-act-2">
+            <div class="act-header">
+              <span class="act-step">დავალება 2 / 2</span>
+              <h4 class="act-title">❓ კარლსონის მეგობრობის ვიქტორინა</h4>
+            </div>
+            <div class="quiz-container" id="karlsson-quiz-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. ემილის სივრცე ================= -->
+    <section id="view-emil" class="view-section">
+      <div class="character-page-container theme-emil">
+        <div class="character-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <div class="header-status-pill" id="emil-status-pill">
+            <span>მისია: შეასრულე 2 აქტივობა ⭐</span>
+          </div>
+        </div>
+
+        <div class="char-intro-grid">
+          <div class="char-hero-card">
+            <div class="char-portrait">
+              <div class="char-avatar-large">👦</div>
+              <div class="char-friends-icons">
+                <span title="ხის კაცუნა">🪵</span>
+                <span title="ემილის კეპი">🧢</span>
+                <span title="წვნიანის ქვაბი">🍲</span>
+              </div>
+            </div>
+            <h2 class="char-title">ემილის თავგადასავალი</h2>
+            <div class="char-subtitle">ლონებერგელი ცნობისმოყვარე ბიჭუნა დიდი გულით</div>
+            
+            <button class="tts-read-btn" onclick="speakText('emil-story-text')" title="ტექსტის მოსმენა">
+              <span class="tts-icon">🔊</span>
+              <span>მომისმინე (ხმამაღლა წაკითხვა)</span>
+            </button>
+          </div>
+
+          <div class="char-text-card">
+            <div class="story-box" id="emil-story-text">
+              <h3 class="section-heading">📖 მოკლე ამბავი ემილის შესახებ:</h3>
+              <p class="story-sentence">
+                <span class="sentence-icon">🏡</span> 
+                გაიცანი <strong>ემილი</strong>! ის ცხოვრობს ლამაზ სოფელში, რომელსაც <strong>ლონებერგა</strong> ჰქვია.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🌱</span> 
+                ემილი ძალიან <strong>ცნობისმოყვარეა</strong> — ყველაფრის გამოკვლევა და შეცნობა აინტერესებს.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🪵</span> 
+                სადურგლოში ყოფნისას ის ხისგან საოცარ <strong>პატარა კაცუნებს</strong> თლის თავისი დანა-ჩარჩოთი.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">💖</span> 
+                ხანდახან რაღაც შეეშლება, მაგრამ მას <strong>ოქროს გული</strong> აქვს: ეხმარება მოხუცებს, ზრუნავს ცხოველებზე და თავის პატარა დაიკო იდაზე!
+              </p>
+            </div>
+
+            <div class="wisdom-box wisdom-emil">
+              <div class="wisdom-icon">💡</div>
+              <div class="wisdom-content">
+                <h4>რა გვასწავლა ემილმა? (მთავარი სიბრძნე)</h4>
+                <p>
+                  <strong>„შეცდომა ყველას მოსდის, მთავარია გულით კეთილი იყო!“</strong><br>
+                  ნუ შეგეშინდება შეცდომის დაშვების, როცა რაიმე ახალს სწავლობ. მთავარია იყო მზრუნველი, შრომისმოყვარე და ყოველთვის ეხმარებოდე სხვებს! 🌱❤️
+                </p>
+              </div>
+            </div>
+
+            <!-- პატარა სიტყვარი -->
+            <div class="vocab-box" id="emil-vocab-box">
+              <div class="vocab-header">
+                <span>📚 პატარა სიტყვარი (დააჭირე სიტყვის მოსასმენად):</span>
+              </div>
+              <div class="vocab-grid" id="emil-vocab-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activities-wrapper">
+          <div class="activities-title">
+            <h3>🎮 ემილის ინტერაქტიული თამაშები:</h3>
+            <p>შეასრულე ორივე დავალება და მიიღე ემილის ხის კაცუნას მედალი!</p>
+          </div>
+
+          <!-- აქტივობა 1 -->
+          <div class="activity-card" id="emil-act-1">
+            <div class="act-header">
+              <span class="act-step">დავალება 1 / 2</span>
+              <h4 class="act-title">🪵 იპოვე ემილის 4 ნივთი!</h4>
+            </div>
+            <p class="act-desc">დააჭირე იმ სურათებს, რომლებიც ემილის ფერმასა და სადურგლოს ეკუთვნის:</p>
+            
+            <div class="items-counter-bar" id="emil-counter-bar">
+              <span>🧺 შეგროვებული ნივთები:</span>
+              <strong id="emil-counter-text">0 / 4</strong>
+            </div>
+
+            <div class="items-grid" id="emil-items-grid"></div>
+            <div class="act-feedback" id="emil-items-feedback"></div>
+          </div>
+
+          <!-- აქტივობა 2 -->
+          <div class="activity-card" id="emil-act-2">
+            <div class="act-header">
+              <span class="act-step">დავალება 2 / 2</span>
+              <h4 class="act-title">❓ ემილის სიკეთისა და გულისხმიერების ვიქტორინა</h4>
+            </div>
+            <div class="quiz-container" id="emil-quiz-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. რონიას სივრცე ================= -->
+    <section id="view-ronia" class="view-section">
+      <div class="character-page-container theme-ronia">
+        <div class="character-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <div class="header-status-pill" id="ronia-status-pill">
+            <span>მისია: შეასრულე 2 აქტივობა ⭐</span>
+          </div>
+        </div>
+
+        <div class="char-intro-grid">
+          <div class="char-hero-card">
+            <div class="char-portrait">
+              <div class="char-avatar-large">🌲</div>
+              <div class="char-friends-icons">
+                <span title="ციხესიმაგრე">🏰</span>
+                <span title="მელაკუდა და ტყის ცხოველები">🦊</span>
+                <span title="გაზაფხულის ყიჟინა">🕊️</span>
+              </div>
+            </div>
+            <h2 class="char-title">ყაჩაღის ასული რონია</h2>
+            <div class="char-subtitle">ჯადოსნური ტყის თავისუფალი და მამაცი მცველი</div>
+            
+            <button class="tts-read-btn" onclick="speakText('ronia-story-text')" title="ტექსტის მოსმენა">
+              <span class="tts-icon">🔊</span>
+              <span>მომისმინე (ხმამაღლა წაკითხვა)</span>
+            </button>
+          </div>
+
+          <div class="char-text-card">
+            <div class="story-box" id="ronia-story-text">
+              <h3 class="section-heading">📖 მოკლე ამბავი რონიას შესახებ:</h3>
+              <p class="story-sentence">
+                <span class="sentence-icon">🏰</span> 
+                გაიცანი <strong>რონია</strong>! ის დაიბადა ძველ ციხესიმაგრეში, რომელიც უღრანი <strong>ტყითაა</strong> გარშემორტყმული.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🌿</span> 
+                რონიას უზომოდ უყვარს <strong>ბუნება</strong>, მაღალი ხეები, სუფთა მდინარეები და ტყის ცხოველები.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">🕊️</span> 
+                რონიამ და მისმა მეგობარმა <strong>ბირკმა</strong> დაამტკიცეს, რომ მშვიდობა და სიყვარული მტრობაზე ბევრად ძლიერია.
+              </p>
+              <p class="story-sentence">
+                <span class="sentence-icon">☀️</span> 
+                რონიას <strong>გაზაფხულის ყიჟინა</strong> სიხარულსა და ახალი ცხოვრების დაწყებას გვასწავლის!
+              </p>
+            </div>
+
+            <div class="wisdom-box wisdom-ronia">
+              <div class="wisdom-icon">💡</div>
+              <div class="wisdom-content">
+                <h4>რა გვასწავლა რონიამ? (მთავარი სიბრძნე)</h4>
+                <p>
+                  <strong>„ბუნების სიყვარული, სიმამაცე და მშვიდობა!“</strong><br>
+                  როდესაც სხვები კამათობენ, იყავი ის, ვინც მშვიდობას აირჩევს. მოუფრთხილდი ბუნებას, შეიყვარე ხეები და ცხოველები, და იყავი ერთგული მეგობარი! 🌲🕊️
+                </p>
+              </div>
+            </div>
+
+            <!-- პატარა სიტყვარი -->
+            <div class="vocab-box" id="ronia-vocab-box">
+              <div class="vocab-header">
+                <span>📚 პატარა სიტყვარი (დააჭირე სიტყვის მოსასმენად):</span>
+              </div>
+              <div class="vocab-grid" id="ronia-vocab-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activities-wrapper">
+          <div class="activities-title">
+            <h3>🎮 რონიას ინტერაქტიული თამაშები:</h3>
+            <p>შეასრულე ორივე დავალება და მიიღე რონიას ტყის მწვანე ვარსკვლავი!</p>
+          </div>
+
+          <!-- აქტივობა 1 -->
+          <div class="activity-card" id="ronia-act-1">
+            <div class="act-header">
+              <span class="act-step">დავალება 1 / 2</span>
+              <h4 class="act-title">🌲 იპოვე რონიას 4 ნივთი და ტყის სიმბოლო!</h4>
+            </div>
+            <p class="act-desc">დააჭირე იმ სურათებს, რომლებიც რონიას ჯადოსნურ ტყეს ეკუთვნის:</p>
+            
+            <div class="items-counter-bar" id="ronia-counter-bar">
+              <span>🧺 შეგროვებული ნივთები:</span>
+              <strong id="ronia-counter-text">0 / 4</strong>
+            </div>
+
+            <div class="items-grid" id="ronia-items-grid"></div>
+            <div class="act-feedback" id="ronia-items-feedback"></div>
+          </div>
+
+          <!-- აქტივობა 2 -->
+          <div class="activity-card" id="ronia-act-2">
+            <div class="act-header">
+              <span class="act-step">დავალება 2 / 2</span>
+              <h4 class="act-title">❓ რონიას სიმამაცისა და მშვიდობის ვიქტორინა</h4>
+            </div>
+            <div class="quiz-container" id="ronia-quiz-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. საუნივერსიტეტო ბიბლიოთეკის მისია ================= -->
+    <section id="view-library" class="view-section">
+      <div class="library-page-container">
+        <!-- ჰედერი -->
+        <div class="library-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <div class="header-status-pill lib-pill" id="library-status-pill">
+            <span>🏛️ ბიბლიოთეკის მისია: 4 წესი + ტესტი ⭐</span>
+          </div>
+        </div>
+
+        <!-- მისალმების დიდი ბანერი -->
+        <div class="library-hero-banner">
+          <div class="lib-hero-icon">🏛️📚✨</div>
+          <div class="lib-hero-content">
+            <span class="lib-tag">სასწავლო ექსკურსიისთვის მზადება</span>
+            <h2 class="lib-title">გზამკვლევი: საუნივერსიტეტო ბიბლიოთეკა!</h2>
+            <p class="lib-desc">
+              ძვირფასო მოსწავლეებო! მალე ჩვენ ვესტუმრებით <strong>საუნივერსიტეტო ბიბლიოთეკას</strong> — წიგნებისა და სიბრძნის ნამდვილ სასახლეს!
+              იქ უამრავი სტუდენტი და მეცნიერი სწავლობს. მოდით ვისწავლოთ, როგორ მოვიქცეთ, რომ ყველამ იამაყოს ჩვენით! 🎓✨
+            </p>
+          </div>
+        </div>
+
+        <!-- ბიბლიოთეკის 4 ოქროს წესი (ილუსტრირებული და ხმოვანი) -->
+        <div class="rules-section">
+          <div class="section-title-wrap">
+            <h3 class="rules-heading">📜 ბიბლიოთეკის 4 ოქროს წესი</h3>
+            <p class="rules-sub">დააჭირე თითოეულ წესს, რომ მოისმინო და დაიმახსოვრო!</p>
+            <div style="margin-top: 12px;">
+              <button class="tts-read-btn" style="max-width: 320px; margin: 0 auto;" onclick="speakAllRules()" title="ყველა წესის მოსმენა">
+                <span class="tts-icon">🔊</span>
+                <span>ყველა წესის ხმამაღლა წაკითხვა</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rules-grid">
+            <!-- წესი 1 -->
+            <div class="rule-card" id="rule-card-1" onclick="speakSingleRule(1, 'ჩურჩულის წესი: ბიბლიოთეკაში ვსაუბრობთ ჩურჩულით და ძალიან წყნარად. არ ვყვირით, რათა სხვებს კითხვაში ხელი არ შევუშალოთ.')">
+              <div class="rule-num">1</div>
+              <div class="rule-emoji">🤫</div>
+              <h4 class="rule-name">ჩურჩულის წესი</h4>
+              <p class="rule-text">
+                ბიბლიოთეკაში ვსაუბრობთ <strong>ჩურჩულით</strong> და ძალიან წყნარად. არ ვყვირით, რათა სხვებს კითხვაში ხელი არ შევუშალოთ.
+              </p>
+              <div class="rule-tag">🔇 სიჩუმე = პატივისცემა</div>
+            </div>
+
+            <!-- წესი 2 -->
+            <div class="rule-card" id="rule-card-2" onclick="speakSingleRule(2, 'სუფთა ხელების წესი: წიგნებს ვეხებით მხოლოდ სუფთა და მშრალი ხელებით. წიგნთან საჭმელს არ ვჭამთ და წვენს არ ვსვამთ.')">
+              <div class="rule-num">2</div>
+              <div class="rule-emoji">🧼</div>
+              <h4 class="rule-name">სუფთა ხელების წესი</h4>
+              <p class="rule-text">
+                წიგნებს ვეხებით მხოლოდ <strong>სუფთა და მშრალი ხელებით</strong>. წიგნთან საჭმელს არ ვჭამთ და წვენს არ ვსვამთ.
+              </p>
+              <div class="rule-tag">✨ სუფთა წიგნი — ბედნიერი წიგნი</div>
+            </div>
+
+            <!-- წესი 3 -->
+            <div class="rule-card" id="rule-card-3" onclick="speakSingleRule(3, 'მშვიდი ნაბიჯის წესი: მაღალ თაროებთან და დერეფნებში დავდივართ მშვიდად. არ დავრბივართ, რათა არ წავიქცეთ და არ დავაზიანოთ თაროები.')">
+              <div class="rule-num">3</div>
+              <div class="rule-emoji">🚶</div>
+              <h4 class="rule-name">მშვიდი ნაბიჯის წესი</h4>
+              <p class="rule-text">
+                მაღალ თაროებთან და დერეფნებში <strong>დავდივართ მშვიდად</strong>. არ დავრბივართ, რათა არ წავიქცეთ და არ დავაზიანოთ თაროები.
+              </p>
+              <div class="rule-tag">👣 ნელი და ფრთხილი ნაბიჯები</div>
+            </div>
+
+            <!-- წესი 4 -->
+            <div class="rule-card" id="rule-card-4" onclick="speakSingleRule(4, 'წიგნის მოფრთხილების წესი: ფურცლებს ვშლით ნაზად, კუთხიდან. არ ვხევთ, არ ვხატავთ წიგნში და წაკითხვის შემდეგ ვაბრუნებთ თავის თაროზე.')">
+              <div class="rule-num">4</div>
+              <div class="rule-emoji">📖</div>
+              <h4 class="rule-name">წიგნის მოფრთხილების წესი</h4>
+              <p class="rule-text">
+                ფურცლებს ვშლით <strong>ნაზად, კუთხიდან</strong>. არ ვხევთ, არ ვხატავთ წიგნში და წაკითხვის შემდეგ ვაბრუნებთ თავის თაროზე.
+              </p>
+              <div class="rule-tag">💖 წიგნი ჩვენი მეგობარია</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ინტერაქტიული სიმულატორი / ტესტი: როგორ მოვიქცევით? -->
+        <div class="simulator-card">
+          <div class="sim-header">
+            <span class="sim-badge">ინტერაქტიული მისია</span>
+            <h3 class="sim-title">🎮 სიტუაციური თამაში: „როგორ მოვიქცეთ ბიბლიოთეკაში?“</h3>
+            <p class="sim-desc">
+              წაიკითხე სიტუაცია და დააჭირე სწორ პასუხს: <strong>„✅ კი, ასე ვიქცევით!“</strong> თუ <strong>„❌ არა, ასე არ შეიძლება!“</strong>
+            </p>
+          </div>
+
+          <div class="sim-questions-container" id="library-sim-container"></div>
+        </div>
+
+        <!-- სერტიფიკატისკენ გადასასვლელი დიდი ღილაკი -->
+        <div class="certificate-unlock-box" id="cert-unlock-box">
+          <div class="cert-box-icon">🏅</div>
+          <div class="cert-box-text">
+            <h3>ყოჩაღ! შენ გაიარე მომზადება!</h3>
+            <p>ახლა გადადი სერტიფიკატის განყოფილებაში, ჩაწერე შენი სახელი და მიიღე <strong>„ნორჩი მკითხველის მედალი“</strong>!</p>
+          </div>
+          <button class="cert-open-btn" onclick="navigateTo('certificate')">
+            <span>🎓 ჩემი სერტიფიკატის გახსნა</span>
+            <span class="arrow">➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. ნორჩი მკითხველის სერტიფიკატი ================= -->
+    <section id="view-certificate" class="view-section">
+      <div class="cert-page-container">
+        <!-- ჰედერი -->
+        <div class="cert-page-header">
+          <button class="back-btn" onclick="navigateTo('home')">
+            <span>⬅️ მთავარზე დაბრუნება</span>
+          </button>
+          <h2>🎓 ნორჩი მკითხველის საზეიმო სერტიფიკატი</h2>
+        </div>
+
+        <!-- მოსწავლის მონაცემების შეყვანა -->
+        <div class="cert-editor-card no-print">
+          <h3>✏️ შეიყვანე შენი მონაცემები სერტიფიკატისთვის:</h3>
+          <div class="cert-form-row">
+            <div class="form-group">
+              <label for="student-name-input">👤 შენი სახელი და გვარი:</label>
+              <input type="text" id="student-name-input" placeholder="მაგ: ნიკოლოზ ბერიძე / აიშა ალიევა" value="პატარა მკითხველი" oninput="updateCertPreview()">
+            </div>
+            <div class="form-group">
+              <label for="student-class-select">🏫 კლასი:</label>
+              <select id="student-class-select" onchange="updateCertPreview()">
+                <option value="II ა კლასი">II ა კლასი 🎒</option>
+                <option value="II ბ კლასი">II ბ კლასი 🎈</option>
+                <option value="III კლასი">III კლასი 🚀</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="teacher-name-input">👩‍🏫 მასწავლებელი:</label>
+              <input type="text" id="teacher-name-input" placeholder="დაწყებითი კლასების მასწავლებელი" value="დაწყებითი კლასების მასწავლებელი" oninput="updateCertPreview()">
+            </div>
+          </div>
+          <div class="cert-actions-bar">
+            <button type="button" class="action-btn celebrate-btn" onclick="triggerConfettiAndCheer()">
+              <span>🎊 იზეიმე! (კონფეტი & ტაში)</span>
+            </button>
+            <button type="button" class="action-btn print-btn" onclick="printCertificate()">
+              <span>🖨️ სერტიფიკატის დაბეჭდვა / შენახვა (PDF)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- დასაბეჭდი სერტიფიკატის ვიზუალი (Printable Certificate) -->
+        <div class="printable-cert-wrapper">
+          <div class="certificate-paper" id="certificate-print-area">
+            <!-- ორნამენტული საზღვარი -->
+            <div class="cert-inner-border">
+              
+              <!-- ზედა გერბი და ლოგოები -->
+              <div class="cert-top-emblem">
+                <div class="cert-book-icon">📖</div>
+                <div class="cert-stars-row">⭐⭐⭐⭐⭐</div>
+              </div>
+
+              <!-- სათაური -->
+              <div class="cert-header-text">
+                <span class="cert-pretitle">საგანმანათლებლო პროექტი</span>
+                <h1 class="cert-main-title">საპატიო სერტიფიკატი</h1>
+                <div class="cert-award-ribbon">🎖️ ნორჩი მკითხველის ოქროს მედალი 🎖️</div>
+              </div>
+
+              <!-- წარდგენის ტექსტი -->
+              <div class="cert-body">
+                <p class="cert-awarded-to">ეს სერტიფიკატი საზეიმოდ გადაეცემა</p>
+                <h2 class="cert-student-name" id="cert-display-name">პატარა მკითხველი</h2>
+                <div class="cert-student-class" id="cert-display-class">II ა კლასი</div>
+
+                <p class="cert-text-paragraph">
+                  იმისთვის, რომ მან წარმატებით დაასრულა <strong>„ასტრიდ ლინდგრენის კვირეული“</strong>,
+                  გაიცნო პეპი, კარლსონი, ემილი და რონია, ისწავლა <strong>სიკეთე</strong>, <strong>მეგობრობა</strong> და <strong>სამართლიანობა</strong>,
+                  გაითავისა ბიბლიოთეკის წესები და საპატიო სტუმრად მიიწვევა <strong>საუნივერსიტეტო ბიბლიოთეკაში</strong>!
+                </p>
+              </div>
+
+              <!-- 4 გმირის ბეჭდები / მედლები -->
+              <div class="cert-badges-grid">
+                <div class="cert-badge-item">
+                  <span class="cert-b-icon">👧</span>
+                  <span class="cert-b-label">პეპის ძალა და სიკეთე</span>
+                </div>
+                <div class="cert-badge-item">
+                  <span class="cert-b-icon">🚁</span>
+                  <span class="cert-b-label">კარლსონის მხიარულება</span>
+                </div>
+                <div class="cert-badge-item">
+                  <span class="cert-b-icon">👦</span>
+                  <span class="cert-b-label">ემილის გულისხმიერება</span>
+                </div>
+                <div class="cert-badge-item">
+                  <span class="cert-b-icon">🌲</span>
+                  <span class="cert-b-label">რონიას მშვიდობა</span>
+                </div>
+              </div>
+
+              <!-- ქვედა ხელმოწერები და ბეჭედი -->
+              <div class="cert-footer">
+                <div class="cert-sig-block">
+                  <div class="sig-line" id="cert-display-teacher">დაწყებითი კლასების მასწავლებელი</div>
+                  <span class="sig-label">მასწავლებლის ხელმოწერა ✍️</span>
+                </div>
+
+                <div class="cert-seal-box">
+                  <div class="official-seal">
+                    <span class="seal-inner">🏛️<br>საუნივერსიტეტო<br>ბიბლიოთეკა<br>★ 2026 ★</span>
+                  </div>
+                </div>
+
+                <div class="cert-sig-block">
+                  <div class="sig-line" id="cert-display-date">ნოემბერი, 2026 წელი</div>
+                  <span class="sig-label">თარიღი 📅</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- მასწავლებლის გზამკვლევის მოდალი / Teacher's Guide Modal -->
+  <div class="modal-overlay" id="teacher-modal" onclick="closeTeacherModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="modal-icon">👩‍🏫</span>
+          <h3>პედაგოგიური გზამკვლევი — II - III კლასები</h3>
+        </div>
+        <button class="close-modal-btn" onclick="closeTeacherModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <h4>🎯 პროექტის მიზნები და საგანმანათლებლო ღირებულებები:</h4>
+        <ul class="guide-list">
+          <li><strong>ენობრივი ბარიერის დაძლევა და ინკლუზია:</strong> ტექსტები დაწერილია მოკლე, თბილი, გასაგები წინადადებებით (3-4 წინადადება). თითოეულ წინადადებასა და საკვანძო სიტყვას ახლავს ვიზუალური ილუსტრაცია/ემოჯი. ინტეგრირებულია <strong>„პატარა სიტყვარი“</strong> და <strong>„მომისმინე 🔊“</strong> ღილაკი სინქრონული ვიზუალური კარაოკით, რაც განსაკუთრებით ეხმარება ეთნიკური უმცირესობის წარმომადგენელ მოსწავლეებს ქართული ენის ათვისებასა და კითხვაში.</li>
+          <li><strong>ეთიკური განათლება და ღირებულებები:</strong> 
+            <ul>
+              <li><strong>პეპი:</strong> სამართლიანობა, სუსტის დაცვა, განსხვავებულობის მიღება.</li>
+              <li><strong>კარლსონი:</strong> მეგობრობის ფასი, მარტოობის დაძლევა, გაზიარება.</li>
+              <li><strong>ემილი:</strong> შეცდომებზე სწავლა, შრომისმოყვარეობა, თანაგრძნობა.</li>
+              <li><strong>რონია:</strong> ბუნების გაფრთხილება, სიმამაცე, მშვიდობიანი თანაცხოვრება.</li>
+            </ul>
+          </li>
+          <li><strong>მზადება საუნივერსიტეტო ბიბლიოთეკისთვის:</strong> ინტერაქტიული ქცევის სიმულატორი ამზადებს მოსწავლეებს აკადემიურ სივრცეში სწორი ეტიკეტისთვის (ჩურჩული, სისუფთავე, წიგნის მოფრთხილება).</li>
+          <li><strong>წახალისება და მოტივაცია:</strong> ყოველ წარმატებულ ნაბიჯზე მოსწავლე იღებს ვარსკვლავებს, ტაშის ხმოვან ეფექტს, ხოლო ბოლოს — პერსონალიზებულ, დასაბეჭდ სერტიფიკატს.</li>
+        </ul>
+
+        <h4>💡 რეკომენდაციები კლასში გამოყენებისთვის:</h4>
+        <p class="guide-tip">
+          💻 <strong>ინტერაქტიულ დაფაზე (Smartboard):</strong> აპლიკაცია იდეალურია მთელი კლასისთვის ფრონტალური ან ჯგუფური მუშაობისთვის.<br>
+          📱 <strong>პლანშეტებზე:</strong> ბავშვებს შეუძლიათ ინდივიდუალურად გაიარონ ვიქტორინები და დააგროვონ ვარსკვლავები.<br>
+          🖨️ <strong>სერტიფიკატი:</strong> კვირეულის ბოლოს დაბეჭდეთ თითოეული მოსწავლის სერტიფიკატი და საზეიმოდ გადაეცით ბიბლიოთეკაში ვიზიტის წინ!
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="action-btn primary-pulse" onclick="closeTeacherModal()">
+          <span>გასაგებია, მადლობა! 👍</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- კონფეტის ტილო / Canvas for Confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- სკრიპტები -->
+  <script src="js/sound.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

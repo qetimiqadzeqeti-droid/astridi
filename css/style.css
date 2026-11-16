@@ -1,0 +1,2194 @@
+/* ============================================================
+   ასტრიდ ლინდგრენის კვირეული — II ა და II ბ კლასები
+   სტილების ფაილი (CSS)
+   ============================================================ */
+
+:root {
+  --font-main: 'Noto Sans Georgian', system-ui, -apple-system, sans-serif;
+  --font-kids: 'Fredoka', 'Noto Sans Georgian', cursive, sans-serif;
+
+  /* ძირითადი ფერები */
+  --bg-gradient: linear-gradient(135deg, #FFF9E6 0%, #F0F7FF 50%, #F5FFF0 100%);
+  --text-main: #2D3436;
+  --text-muted: #636E72;
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+
+  /* თემატური ფერები გმირებისთვის */
+  --pippi-primary: #FF7043;
+  --pippi-secondary: #FFB300;
+  --pippi-bg: #FFF3E0;
+  --pippi-border: #FFCC80;
+
+  --karlsson-primary: #0288D1;
+  --karlsson-secondary: #E53935;
+  --karlsson-bg: #E1F5FE;
+  --karlsson-border: #81D4FA;
+
+  --emil-primary: #2E7D32;
+  --emil-secondary: #8D6E63;
+  --emil-bg: #E8F5E9;
+  --emil-border: #A5D6A7;
+
+  --ronia-primary: #00796B;
+  --ronia-secondary: #5E35B1;
+  --ronia-bg: #E0F2F1;
+  --ronia-border: #80CBC4;
+
+  --lib-primary: #1A237E;
+  --lib-secondary: #FFB300;
+  --lib-bg: #EDE7F6;
+  --lib-border: #B39DDB;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --shadow-sm: 0 4px 10px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 16px 36px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 20px rgba(255, 179, 0, 0.4);
+}
+
+/* ძირითადი გადატვირთვა */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 60px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   ზედა პანელი (HEADER)
+   ============================================================ */
+.app-header {
+  background: #FFFFFF;
+  border-bottom: 3px solid #EFE6D8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo-area:hover {
+  transform: scale(1.02);
+}
+
+.logo-icon {
+  font-size: 2.4rem;
+  background: #FFF9C4;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 2px dashed #FBC02D;
+}
+
+.logo-text .main-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #1A237E;
+  letter-spacing: -0.5px;
+}
+
+.logo-text .sub-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #5C6BC0;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* კლასის ამომრჩევი */
+.class-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid #CBD5E1;
+}
+
+.picker-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.class-btn {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  background: #FFFFFF;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.class-btn:hover {
+  background: #E2E8F0;
+}
+
+.class-btn.active {
+  background: #3B82F6;
+  color: #FFFFFF;
+  border-color: #2563EB;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.35);
+}
+
+/* ვარსკვლავების მრიცხველი */
+.stars-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #FEF3C7;
+  border: 2px solid #F59E0B;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.star-icon {
+  font-size: 1.3rem;
+  animation: pulseStar 2s infinite ease-in-out;
+}
+
+@keyframes pulseStar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.star-count {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #B45309;
+}
+
+.star-max {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #D97706;
+}
+
+/* ხმის ღილაკი */
+.sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: #EEF2FF;
+  border: 2px solid #C7D2FE;
+  color: #4338CA;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover {
+  background: #E0E7FF;
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   ნავიგაციის მენიუ (NAV BAR)
+   ============================================================ */
+.nav-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px 20px 10px 20px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-btn {
+  font-family: var(--font-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  background: #F8FAFC;
+  color: #475569;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.nav-btn:hover {
+  background: #F1F5F9;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-btn.active {
+  background: #1E293B;
+  color: #FFFFFF;
+  border-color: #0F172A;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25);
+}
+
+.nav-btn.btn-pippi.active {
+  background: var(--pippi-primary);
+  border-color: #E64A19;
+}
+.nav-btn.btn-karlsson.active {
+  background: var(--karlsson-primary);
+  border-color: #0277BD;
+}
+.nav-btn.btn-emil.active {
+  background: var(--emil-primary);
+  border-color: #1B5E20;
+}
+.nav-btn.btn-ronia.active {
+  background: var(--ronia-primary);
+  border-color: #004D40;
+}
+.nav-btn.btn-library.active {
+  background: var(--lib-primary);
+  border-color: #0D47A1;
+}
+.nav-btn.btn-cert.active {
+  background: #D97706;
+  border-color: #B45309;
+}
+
+.nav-btn.highlight-nav {
+  background: #FEF3C7;
+  border-color: #FCD34D;
+  color: #92400E;
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+}
+
+.nav-star {
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   ძირითადი კონტენტი და სექციები
+   ============================================================ */
+.main-content {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+
+.view-section {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.view-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   მთავარი ეკრანი (HOME VIEW)
+   ============================================================ */
+.welcome-hero {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.welcome-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome-chip {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  max-width: 650px;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.action-btn.primary-pulse {
+  background: #FBBF24;
+  color: #78350F;
+  box-shadow: 0 4px 18px rgba(251, 191, 36, 0.5);
+}
+
+.action-btn.primary-pulse:hover {
+  background: #F59E0B;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.action-btn.secondary-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.action-btn.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ილუსტრაცია ჰეროში */
+.hero-illustration {
+  position: relative;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floating-books {
+  position: relative;
+  width: 140px;
+  height: 90px;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 2.4rem;
+  animation: floatAnim 3s infinite ease-in-out;
+}
+
+.float-item.item-1 { top: 0; left: 10px; animation-delay: 0s; }
+.float-item.item-2 { top: -10px; right: 10px; animation-delay: 0.5s; font-size: 1.8rem; }
+.float-item.item-3 { bottom: 0; left: 30px; animation-delay: 1s; font-size: 2rem; }
+.float-item.item-4 { bottom: -10px; right: 20px; animation-delay: 1.5s; font-size: 1.6rem; }
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.mascot-badge {
+  background: #FFFFFF;
+  color: #1E293B;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  border: 2px solid #FEF08A;
+}
+
+.mascot-icon {
+  font-size: 2.2rem;
+}
+
+.mascot-bubble {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+/* ============================================================
+   პროგრესის ბარათი
+   ============================================================ */
+.progress-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid #E2E8F0;
+  margin-bottom: 32px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.progress-status {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2563EB;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 16px;
+  background: #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981, #059669);
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mini-badge {
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-badge:hover {
+  background: #EEF2FF;
+  border-color: #A5B4FC;
+}
+
+.mini-badge.completed {
+  background: #ECFDF5;
+  border-color: #6EE7B7;
+  color: #065F46;
+}
+
+/* ============================================================
+   გმირების ბარათების ბადე (GRID)
+   ============================================================ */
+.cards-grid-title {
+  margin-bottom: 20px;
+}
+
+.cards-grid-title h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.subtitle-hint {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.hero-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.hero-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-pippi {
+  background: var(--pippi-bg);
+  border-color: var(--pippi-border);
+}
+.card-pippi:hover { border-color: var(--pippi-primary); }
+
+.card-karlsson {
+  background: var(--karlsson-bg);
+  border-color: var(--karlsson-border);
+}
+.card-karlsson:hover { border-color: var(--karlsson-primary); }
+
+.card-emil {
+  background: var(--emil-bg);
+  border-color: var(--emil-border);
+}
+.card-emil:hover { border-color: var(--emil-primary); }
+
+.card-ronia {
+  background: var(--ronia-bg);
+  border-color: var(--ronia-border);
+}
+.card-ronia:hover { border-color: var(--ronia-primary); }
+
+.card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.card-badge.completed {
+  background: #10B981;
+  color: #FFFFFF;
+}
+
+.card-avatar {
+  width: 90px;
+  height: 90px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid #FFFFFF;
+}
+
+.avatar-emoji {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.avatar-sub {
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+.card-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 8px;
+}
+
+.card-tagline {
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.card-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.value-tag {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-cta {
+  font-family: var(--font-main);
+  margin-top: auto;
+  background: #FFFFFF;
+  border: 2px solid #CBD5E1;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-cta:hover {
+  background: #1E293B;
+  color: #FFFFFF;
+  border-color: #1E293B;
+}
+
+.card-cta .arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.card-cta:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   სპეციალური მისია: ბიბლიოთეკა (HOME BANNER)
+   ============================================================ */
+.special-mission-banner {
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #FBBF24;
+  transition: all 0.3s ease;
+}
+
+.special-mission-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(49, 46, 129, 0.4);
+}
+
+.mission-star-burst {
+  display: inline-block;
+  background: #F59E0B;
+  color: #78350F;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.mission-banner-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.mission-icon-box {
+  font-size: 3.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.mission-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.mission-tag {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FDE68A;
+  margin-bottom: 4px;
+}
+
+.mission-headline {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.mission-description {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #E0E7FF;
+}
+
+.mission-btn {
+  font-family: var(--font-main);
+  background: #FBBF24;
+  color: #78350F;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4);
+  transition: all 0.25s ease;
+}
+
+.mission-btn:hover {
+  background: #F59E0B;
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   პერსონაჟების გვერდები (CHARACTER PAGES)
+   ============================================================ */
+.character-page-container {
+  padding-bottom: 30px;
+}
+
+.character-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.back-btn {
+  font-family: var(--font-main);
+  background: #FFFFFF;
+  border: 2px solid #CBD5E1;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+  transform: translateX(-3px);
+}
+
+.header-status-pill {
+  background: #FEF3C7;
+  border: 2px solid #F59E0B;
+  color: #92400E;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.header-status-pill.completed {
+  background: #D1FAE5;
+  border-color: #10B981;
+  color: #065F46;
+}
+
+.char-intro-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 860px) {
+  .char-intro-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.char-hero-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  border: 3px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme-pippi .char-hero-card { border-color: var(--pippi-border); background: var(--pippi-bg); }
+.theme-karlsson .char-hero-card { border-color: var(--karlsson-border); background: var(--karlsson-bg); }
+.theme-emil .char-hero-card { border-color: var(--emil-border); background: var(--emil-bg); }
+.theme-ronia .char-hero-card { border-color: var(--ronia-border); background: var(--ronia-bg); }
+
+.char-portrait {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.char-avatar-large {
+  font-size: 4.8rem;
+  width: 130px;
+  height: 130px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  border: 4px solid #FFFFFF;
+}
+
+.char-friends-icons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -12px;
+  position: relative;
+  z-index: 2;
+}
+
+.char-friends-icons span {
+  font-size: 1.5rem;
+  background: #FFFFFF;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid #F1F5F9;
+}
+
+.char-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+
+.char-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.tts-read-btn {
+  font-family: var(--font-main);
+  background: #3B82F6;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+  transition: all 0.2s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.tts-read-btn:hover {
+  background: #2563EB;
+  transform: translateY(-2px);
+}
+
+.char-text-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #E2E8F0;
+}
+
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.story-sentence {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.story-sentence strong {
+  color: #0F172A;
+  background: #FEF3C7;
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+.sentence-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* მთავარი სიბრძნის ბლოკი (WISDOM BOX) */
+.wisdom-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border-left: 8px solid;
+}
+
+.wisdom-pippi { border-left-color: var(--pippi-primary); background: #FFFBF5; }
+.wisdom-karlsson { border-left-color: var(--karlsson-primary); background: #F0F9FF; }
+.wisdom-emil { border-left-color: var(--emil-primary); background: #F2FBF5; }
+.wisdom-ronia { border-left-color: var(--ronia-primary); background: #F0FDF9; }
+
+.wisdom-icon {
+  font-size: 2.8rem;
+  flex-shrink: 0;
+}
+
+.wisdom-content h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+
+.wisdom-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* ============================================================
+   ინტერაქტიული თამაშების განყოფილება (ACTIVITIES)
+   ============================================================ */
+.activities-wrapper {
+  margin-top: 20px;
+}
+
+.activities-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.activities-title h3 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.activities-title p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.activity-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #E2E8F0;
+  margin-bottom: 28px;
+}
+
+.act-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.act-step {
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  color: #4338CA;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.act-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.act-desc {
+  font-size: 1.05rem;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* ნივთების ბადე (ITEMS GRID) */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.item-tile {
+  background: #F8FAFC;
+  border: 3px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.item-tile:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: #94A3B8;
+  background: #FFFFFF;
+}
+
+.item-tile .item-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.item-tile .item-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
+  line-height: 1.3;
+}
+
+.item-tile.selected-correct {
+  background: #ECFDF5 !important;
+  border-color: #10B981 !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.item-tile.selected-wrong {
+  animation: shakeWrong 0.4s ease;
+  border-color: #EF4444 !important;
+  background: #FEF2F2 !important;
+}
+
+@keyframes shakeWrong {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.act-feedback {
+  min-height: 38px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.act-feedback.success {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.act-feedback.hint {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+/* ვიქტორინა (QUIZ CONTAINER) */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quiz-question-box {
+  background: #F8FAFC;
+  border: 2px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.quiz-q-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quiz-opt-btn {
+  font-family: var(--font-main);
+  background: #FFFFFF;
+  border: 2px solid #CBD5E1;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.quiz-opt-btn:hover {
+  background: #F1F5F9;
+  border-color: #64748B;
+  transform: translateY(-2px);
+}
+
+.quiz-opt-btn.correct {
+  background: #D1FAE5 !important;
+  border-color: #10B981 !important;
+  color: #065F46 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.quiz-opt-btn.wrong {
+  background: #FEE2E2 !important;
+  border-color: #EF4444 !important;
+  color: #991B1B !important;
+}
+
+/* ============================================================
+   საუნივერსიტეტო ბიბლიოთეკის მისია (LIBRARY VIEW)
+   ============================================================ */
+.library-hero-banner {
+  background: linear-gradient(135deg, #1E1B4B 0%, #2E1065 50%, #4338CA 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid #FBBF24;
+}
+
+.lib-hero-icon {
+  font-size: 4rem;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 16px 22px;
+  border-radius: var(--radius-lg);
+}
+
+.lib-hero-content {
+  flex: 1;
+}
+
+.lib-tag {
+  display: inline-block;
+  background: #F59E0B;
+  color: #78350F;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.lib-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.lib-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #E0E7FF;
+}
+
+/* 4 ოქროს წესი */
+.rules-section {
+  margin-bottom: 36px;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.rules-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.rules-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.rule-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 3px solid #E2E8F0;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.rule-card:hover {
+  transform: translateY(-6px);
+  border-color: #6366F1;
+  box-shadow: var(--shadow-lg);
+}
+
+.rule-num {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: #EEF2FF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #4338CA;
+  font-size: 0.95rem;
+}
+
+.rule-emoji {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.rule-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 8px;
+}
+
+.rule-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.rule-tag {
+  margin-top: auto;
+  background: #F1F5F9;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  text-align: center;
+}
+
+/* სიმულატორი / ქცევის ტესტი */
+.simulator-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #E2E8F0;
+  margin-bottom: 36px;
+}
+
+.sim-header {
+  margin-bottom: 24px;
+}
+
+.sim-badge {
+  display: inline-block;
+  background: #EDE9FE;
+  color: #6D28D9;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.sim-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+
+.sim-desc {
+  font-size: 1.05rem;
+  color: #475569;
+}
+
+.sim-questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sim-scenario-box {
+  background: #F8FAFC;
+  border: 2px solid #CBD5E1;
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.scenario-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.scenario-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.choice-btn {
+  font-family: var(--font-main);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.choice-yes {
+  background: #ECFDF5;
+  color: #065F46;
+  border-color: #A7F3D0;
+}
+
+.choice-yes:hover {
+  background: #10B981;
+  color: #FFFFFF;
+}
+
+.choice-no {
+  background: #FEF2F2;
+  color: #991B1B;
+  border-color: #FECACA;
+}
+
+.choice-no:hover {
+  background: #EF4444;
+  color: #FFFFFF;
+}
+
+/* სერტიფიკატის გახსნის ბლოკი */
+.certificate-unlock-box {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border: 3px dashed #F59E0B;
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: var(--shadow-md);
+  flex-wrap: wrap;
+}
+
+.cert-box-icon {
+  font-size: 3.5rem;
+}
+
+.cert-box-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+.cert-box-text h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #78350F;
+  margin-bottom: 4px;
+}
+
+.cert-box-text p {
+  font-size: 1.05rem;
+  color: #92400E;
+}
+
+.cert-open-btn {
+  font-family: var(--font-main);
+  background: #D97706;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+  transition: all 0.25s ease;
+}
+
+.cert-open-btn:hover {
+  background: #B45309;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ============================================================
+   ნორჩი მკითხველის სერტიფიკატი (CERTIFICATE VIEW)
+   ============================================================ */
+.cert-page-container {
+  padding-bottom: 40px;
+}
+
+.cert-page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cert-page-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.cert-editor-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #E2E8F0;
+  margin-bottom: 32px;
+}
+
+.cert-editor-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 18px;
+}
+
+.cert-form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 768px) {
+  .cert-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.form-group input, .form-group select {
+  font-family: var(--font-main);
+  padding: 12px 16px;
+  border: 2px solid #CBD5E1;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1E293B;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.cert-actions-bar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.celebrate-btn {
+  background: #EC4899;
+  color: #FFFFFF;
+}
+
+.celebrate-btn:hover {
+  background: #DB2777;
+}
+
+.print-btn {
+  background: #10B981;
+  color: #FFFFFF;
+}
+
+.print-btn:hover {
+  background: #059669;
+}
+
+/* ============================================================
+   დასაბეჭდი სერტიფიკატის ქაღალდი (PRINTABLE CERTIFICATE)
+   ============================================================ */
+.printable-cert-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.certificate-paper {
+  width: 100%;
+  max-width: 900px;
+  background: #FFFDF9;
+  border: 8px solid #B45309;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  position: relative;
+  background-image: radial-gradient(#FDE68A 0.75px, transparent 0.75px), radial-gradient(#FDE68A 0.75px, #FFFDF9 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.cert-inner-border {
+  border: 3px double #D97706;
+  border-radius: 12px;
+  padding: 36px 40px;
+  text-align: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.cert-top-emblem {
+  margin-bottom: 12px;
+}
+
+.cert-book-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.cert-stars-row {
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  color: #F59E0B;
+  margin-top: 4px;
+}
+
+.cert-pretitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #92400E;
+}
+
+.cert-main-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #78350F;
+  letter-spacing: -1px;
+  margin: 4px 0 8px 0;
+}
+
+.cert-award-ribbon {
+  display: inline-block;
+  background: #F59E0B;
+  color: #FFFFFF;
+  font-size: 1.15rem;
+  font-weight: 800;
+  padding: 6px 24px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+  margin-bottom: 24px;
+}
+
+.cert-awarded-to {
+  font-size: 1.15rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.cert-student-name {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1E293B;
+  margin: 6px 0;
+  border-bottom: 2px dashed #CBD5E1;
+  display: inline-block;
+  padding: 0 30px 6px 30px;
+}
+
+.cert-student-class {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #3B82F6;
+  margin-bottom: 18px;
+}
+
+.cert-text-paragraph {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #334155;
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+}
+
+.cert-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto 32px auto;
+}
+
+@media (max-width: 600px) {
+  .cert-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cert-badge-item {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.cert-b-icon {
+  font-size: 1.8rem;
+}
+
+.cert-b-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #E2E8F0;
+}
+
+.cert-sig-block {
+  text-align: center;
+  min-width: 180px;
+}
+
+.sig-line {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1E293B;
+  border-bottom: 1px solid #64748B;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.sig-label {
+  font-size: 0.85rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.cert-seal-box {
+  display: flex;
+  justify-content: center;
+}
+
+.official-seal {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 4px double #B45309;
+  background: #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(180, 83, 9, 0.2);
+}
+
+.seal-inner {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #92400E;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   მასწავლებლის გზამკვლევის მოდალი (MODAL)
+   ============================================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+  border: 3px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  animation: zoomModal 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes zoomModal {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F8FAFC;
+}
+
+.modal-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-icon {
+  font-size: 1.8rem;
+}
+
+.modal-title-box h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #64748B;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.close-modal-btn:hover {
+  color: #0F172A;
+}
+
+.modal-body {
+  padding: 24px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.modal-body h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 16px 0 10px 0;
+}
+
+.guide-list {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.guide-list li {
+  margin-bottom: 8px;
+}
+
+.guide-tip {
+  background: #EFF6FF;
+  border-left: 4px solid #3B82F6;
+  padding: 14px 18px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ============================================================
+   კონფეტი (CONFETTI CANVAS)
+   ============================================================ */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================================
+   პატარა სიტყვარი & ენობრივი მხარდაჭერა (VOCABULARY HELPER)
+   ============================================================ */
+.vocab-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  margin-top: 20px;
+  border: 2px dashed #CBD5E1;
+  box-shadow: var(--shadow-sm);
+}
+
+.vocab-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 14px;
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.vocab-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.vocab-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  background: #FFFFFF;
+  border-color: #94A3B8;
+}
+
+.vocab-word {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vocab-def {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   ნივთების მთვლელი ბარი (ITEMS COUNTER BAR)
+   ============================================================ */
+.items-counter-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #EEF2FF;
+  color: #3730A3;
+  border: 2px solid #C7D2FE;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.items-counter-bar.completed {
+  background: #ECFDF5;
+  color: #065F46;
+  border-color: #6EE7B7;
+}
+
+/* ============================================================
+   კარაოკე წაკითხვა (AUDIO & VISUAL READING HIGHLIGHTER)
+   ============================================================ */
+.reading-active-box {
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.35) !important;
+  border-color: #3B82F6 !important;
+}
+
+.story-sentence {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.35s ease;
+}
+
+.story-sentence.active-reading {
+  background: #FEF08A;
+  color: #1E293B;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.35);
+  border-left: 5px solid #F59E0B;
+}
+
+/* ============================================================
+   ბეჭდვის სტილები (@media print)
+   ============================================================ */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    padding: 0 !important;
+    color: #000000 !important;
+  }
+
+  .app-header,
+  .no-print,
+  .back-btn,
+  .cert-editor-card,
+  .modal-overlay,
+  #confetti-canvas {
+    display: none !important;
+  }
+
+  .main-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .view-section {
+    display: none !important;
+  }
+
+  #view-certificate {
+    display: block !important;
+  }
+
+  .certificate-paper {
+    border: 5px solid #B45309 !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .cert-inner-border {
+    padding: 20px !important;
+  }
+
+  .cert-main-title {
+    font-size: 2.2rem !important;
+  }
+
+  .cert-student-name {
+    font-size: 2rem !important;
+  }
+}
